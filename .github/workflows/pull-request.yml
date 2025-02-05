@@ -32,8 +32,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ewallet/requirements.txt
       
-      - name: Set environment variables  # Ajout de cette étape pour debug
-        run: env | grep DJANGO
+      - name: Vérifier les variables d'environnement
+        run: env
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
 
       - name: Run tests
         env:
