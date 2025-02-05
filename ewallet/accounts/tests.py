@@ -35,3 +35,16 @@ class UserAuthTests(TestCase):
         response = self.client.get(reverse('logout'))  # Déconnexion
         self.assertEqual(response.status_code, 302)  # Redirection après déconnexion
         self.assertFalse('_auth_user_id' in self.client.session)  # Vérifie que l'utilisateur est déconnecté
+
+class FrontendTests(TestCase):
+    def test_signup_page_loads(self):
+        """Test si la page d'inscription charge correctement"""
+        response = self.client.get(reverse('signup'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'accounts/signup.html')
+
+    def test_login_page_loads(self):
+        """Test si la page de connexion charge correctement"""
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'accounts/login.html')
