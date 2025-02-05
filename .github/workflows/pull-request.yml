@@ -11,7 +11,7 @@ jobs:
     environment: Ewallet
     services:
       postgres:
-        image: postgres:latest
+        image: postgres:17
         env:
           POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
           POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
@@ -31,11 +31,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r ewallet/requirements.txt
-      
-      - name: Vérifier les variables d'environnement
-        run: env
-        env:
-          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
 
       - name: Run tests
         env:
