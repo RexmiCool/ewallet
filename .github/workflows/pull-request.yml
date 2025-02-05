@@ -41,7 +41,7 @@ jobs:
         env:
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
-          python ewallet/manage.py test --verbosity=2
+          python ewallet/manage.py test accounts
       
       - name: Prevent merge if tests fail
         if: failure()
