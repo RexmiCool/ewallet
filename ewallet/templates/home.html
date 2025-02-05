@@ -1,6 +1,7 @@
 {% if user.is_authenticated %}
     <p>Bienvenue, {{ user.username }}!</p>
     <a href="{% url 'logout' %}">Disconnect</a>
+    <a href="{% url 'portfolio_list' %}" class="btn btn-primary">Voir les portefeuilles</a>
 {% else %}
     <a href="{% url 'signup' %}">Sign up</a>
     <a href="{% url 'login' %}">Sign in</a>

@@ -1,0 +1,22 @@
+<h1>Portefeuille : {{ portfolio.name }}</h1>
+
+<table>
+    <tr>
+        <th>Action</th>
+        <th>Quantité</th>
+        <th>Prix d'achat</th>
+        <th>Prix actuel</th>
+        <th>Plus-value (€)</th>
+        <th>Plus-value (%)</th>
+    </tr>
+    {% for stock in stocks %}
+    <tr>
+        <td>{{ stock.stock.symbol }}</td>
+        <td>{{ stock.quantity }}</td>
+        <td>{{ stock.purchase_price }}</td>
+        <td>{{ stock.current_price|default:"Non disponible" }}</td>
+        <td>{{ stock.profit_data.profit|default:"N/A" }}</td>
+        <td>{{ stock.profit_data.profit_percent|default:"N/A" }}%</td>
+    </tr>
+    {% endfor %}
+</table>
