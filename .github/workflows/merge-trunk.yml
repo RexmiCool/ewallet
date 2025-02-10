@@ -36,9 +36,11 @@ jobs:
       - name: Build Docker image ewallet
         run: |
           docker build -t ewallet:${{ github.sha }} -f ewallet/Dockerfile ewallet/
-
       
       - name: Push Docker image
+        env:
+            DJANGO_SECRET_KEY: ${{ secrets.DOCKER_PASSWORD }}
+            API_KEY: ${{ secrets.DOCKER_USERNAME }}
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
           docker push ewallet:${{ github.sha }}
