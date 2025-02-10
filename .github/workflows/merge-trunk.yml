@@ -33,10 +33,10 @@ jobs:
           python ewallet/manage.py test accounts
           python ewallet/manage.py test finance
 
-      - name: Build Docker image
-        working-directory: ewallet
+      - name: Build Docker image ewallet
         run: |
-          docker build -t ewallet:${{ github.sha }} .
+          docker build -t ewallet:${{ github.sha }} -f ewallet/Dockerfile ewallet/
+
       
       - name: Push Docker image
         run: |
