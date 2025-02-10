@@ -11,7 +11,7 @@ jobs:
     environment: Ewallet
     services:
       postgres:
-        image: postgres:latest
+        image: postgres:17
         env:
           POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
           POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
@@ -32,16 +32,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ewallet/requirements.txt
       
-      - name: Vérifier les variables d'environnement
-        run: env
-        env:
-          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
-
       - name: Run tests
         env:
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          API_KEY: ${{ secrets.API_KEY }}
         run: |
-          python ewallet/manage.py test
+          python ewallet/manage.py makemigrations
+          python ewallet/manage.py migrate
+          python ewallet/manage.py test accounts
+          python ewallet/manage.py test finance
       
       - name: Prevent merge if tests fail
         if: failure()
