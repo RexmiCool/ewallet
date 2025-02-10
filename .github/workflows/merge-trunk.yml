@@ -24,6 +24,9 @@ jobs:
           pip install -r ewallet/requirements.txt
       
       - name: Run tests
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          API_KEY: ${{ secrets.API_KEY }}
         run: |
           python ewallet/manage.py test accounts
           python ewallet/manage.py test finance
