@@ -38,7 +38,7 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
         run: |
           python ewallet/manage.py makemigrations
-          pip ewallet/manage.py migrate
+          python ewallet/manage.py migrate
 
       - name: Run tests
         env:
