@@ -25,7 +25,8 @@ jobs:
       
       - name: Run tests
         run: |
-          python ewallet/manage.py test
+          python ewallet/manage.py test accounts
+          python ewallet/manage.py test finance
       
       - name: Build Docker image
         run: |
