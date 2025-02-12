@@ -28,7 +28,7 @@ RUN useradd -m -r appuser && \
    mkdir /app && \
    chown -R appuser /app
  
-COPY entrypoint.sh /app/entrypoints.sh
+COPY entrypoints.sh /app/entrypoints.sh
 RUN chmod +x /app/entrypoints.sh
 
 # Copy the Python dependencies from the builder stage
