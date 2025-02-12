@@ -35,9 +35,11 @@ Pour exécuter l'application localement, suivez les étapes ci-dessous :
 1. Assurez-vous que toutes les dépendances sont installées (voir la section "How to Build").
 
 2. Configurez les variables d'environnement nécessaires en créant un fichier .env à partir du modèle .env.sample :
+
     cp .env.sample .env
 
 3. Modifiez le fichier .env pour y ajouter vos propres valeurs :
+
     DJANGO_SECRET_KEY=XXXX
     DEBUG=True
     DJANGO_LOGLEVEL=info
@@ -51,7 +53,7 @@ Pour exécuter l'application localement, suivez les étapes ci-dessous :
     API_KEY=XXXX
 
 4. Démarrez les services Docker :
+
     docker-compose up --build
 
-5. Démarrez les services Docker :
-    Accédez à l'application dans votre navigateur à l'adresse http://localhost:8000.
+5. Accédez à l'application dans votre navigateur à l'adresse http://localhost:8000.
