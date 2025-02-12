@@ -16,14 +16,14 @@ Ewallet est une application de portefeuille électronique qui permet aux utilisa
 Pour construire l'application, suivez les étapes ci-dessous :
 
 1. Clonez le repository :
-   ```sh
+   ```
    git clone https://github.com/votre-utilisateur/ewallet.git
    cd ewallet
 
 ## How to Test
 
 Pour exécuter les tests unitaires, utilisez la commande suivante :
-
+   
     python ewallet/manage.py makemigrations
     python ewallet/manage.py migrate
     python ewallet/manage.py test accounts
@@ -35,11 +35,11 @@ Pour exécuter l'application localement, suivez les étapes ci-dessous :
 1. Assurez-vous que toutes les dépendances sont installées (voir la section "How to Build").
 
 2. Configurez les variables d'environnement nécessaires en créant un fichier .env à partir du modèle .env.sample :
-
+   ```
     cp .env.sample .env
 
 3. Modifiez le fichier .env pour y ajouter vos propres valeurs :
-
+   ```
     DJANGO_SECRET_KEY=XXXX
     DEBUG=True
     DJANGO_LOGLEVEL=info
@@ -53,7 +53,7 @@ Pour exécuter l'application localement, suivez les étapes ci-dessous :
     API_KEY=XXXX
 
 4. Démarrez les services Docker :
-
+   ```
     docker-compose up --build
 
 5. Accédez à l'application dans votre navigateur à l'adresse http://localhost:8000.
