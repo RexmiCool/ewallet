@@ -28,8 +28,8 @@ RUN useradd -m -r appuser && \
    mkdir /app && \
    chown -R appuser /app
  
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
+COPY entrypoint.sh /app/entrypoints.sh
+RUN chmod +x /app/entrypoints.sh
 
 # Copy the Python dependencies from the builder stage
 COPY --from=builder /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
@@ -53,8 +53,8 @@ EXPOSE 8000
  
 
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoints.sh"]
 
-#ENTRYPOINT ["./entrypoint.sh"]
+# ENTRYPOINT ["./entrypoints.sh"]
 # Start the application using Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "ewallet.wsgi:application"]
