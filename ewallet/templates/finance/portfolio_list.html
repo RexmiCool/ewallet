@@ -1,0 +1,14 @@
+<h2>Mes Portefeuilles</h2>
+<ul>
+    {% for portfolio in portfolios %}
+        <div>
+            <h3>{{ portfolio.name }}</h3>
+            <a href="{% url 'portfolio_detail' portfolio.id %}">Voir les détails</a>
+        </div>
+    {% empty %}
+        <li>Aucun portefeuille trouvé.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'portfolio_create' %}">Créer un nouveau portefeuille</a>
+<br>
+<a href="{% url 'home' %}">Home</a>

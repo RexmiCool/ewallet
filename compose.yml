@@ -32,10 +32,9 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PORT: ${DATABASE_PORT}
+      API_KEY: ${API_KEY}
     env_file:
       - .env
-    entrypoint: ["/app/entrypoint.sh"]
-    command: ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "ewallet.wsgi:application"]
 
 volumes:
   postgres_data:
