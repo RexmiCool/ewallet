@@ -53,7 +53,7 @@ EXPOSE 8000
  
 
 
-ENTRYPOINT ["/app/entrypoints.sh"]
+ENTRYPOINT ["bash", "/app/entrypoints.sh"]
 
 # ENTRYPOINT ["./entrypoints.sh"]
 # Start the application using Gunicorn
